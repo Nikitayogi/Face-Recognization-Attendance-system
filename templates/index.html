@@ -2,33 +2,26 @@
 <html>
 <head>
     <title>Face Recognition Attendance</title>
-    <style>
-        body { text-align: center; font-family: Arial; margin-top: 30px; }
-        h1 { color: #333; }
-        img { border: 2px solid #555; }
-        button { padding: 10px 20px; margin: 10px; cursor: pointer; font-size: 16px; }
-        #message { font-size: 20px; color: green; margin-top: 20px; }
-    </style>
 </head>
-<body>
-    <h1>Face Recognition Attendance System</h1>
-    <div>
-        <img id="videoFeed" src="{{ url_for('video_feed') }}" width="640" height="480">
-    </div>
-    <div>
-        <button onclick="stopCamera()">Stop Camera</button>
-    </div>
-    <div id="message"></div>
+<body style="text-align:center;">
 
-    <script>
-        function stopCamera() {
-            fetch("/stop_feed", { method: "POST" })
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("videoFeed").src = "";  // Stop feed
-                document.getElementById("message").innerText = data; // Show "Attendance Complete"
-            });
-        }
-    </script>
+    <h1>Face Recognition Attendance System</h1>
+
+    <a href="/start">
+        <button style="padding:10px 25px; font-size:18px; background:green; color:white;">
+            Start
+        </button>
+    </a>
+
+    <a href="/stop">
+        <button style="padding:10px 25px; font-size:18px; background:red; color:white;">
+            Stop
+        </button>
+    </a>
+
+    <br><br>
+
+    <img src="{{ url_for('video') }}" width="700">
+
 </body>
 </html>
